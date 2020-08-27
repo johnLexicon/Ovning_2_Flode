@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Globalization;
-using System.Reflection;
-using System.Reflection.Metadata;
-using System.Runtime.CompilerServices;
 using System.Text;
-using System.Xml.Serialization;
 
 namespace Ovning_2_Flode
 {
@@ -35,7 +31,7 @@ namespace Ovning_2_Flode
         }
 
 
-        private static int handleMainMenu()
+        private static void handleMainMenu()
         {
             int choice;
             
@@ -70,12 +66,11 @@ namespace Ovning_2_Flode
                     break;
                 default:
                     Console.Clear();
-                    Console.WriteLine("Felaktig inmatning. Försök igen!");
+                    Console.WriteLine("Felaktig inmatning. Försök igen!"); // Bryta ut?
                     break;
             }
-
-            return choice;
         }
+
 
         private static void repeat()
         {
@@ -100,6 +95,7 @@ namespace Ovning_2_Flode
             Console.WriteLine(text);
             Console.WriteLine();
         }
+
 
         private static void company()
         {
@@ -132,7 +128,7 @@ namespace Ovning_2_Flode
         }
 
 
-        private static int calculatePrice(int person = 1)
+        private static int calculatePrice(int person = 1) //0? companymembers?
         {
             int price;
             Console.Write("Ange ålder");
