@@ -82,7 +82,7 @@ namespace Ovning_2_Flode
             int nrOfPersons;
 
             Console.Clear();
-            Console.Write("Ange antal personer i sällskapet:");
+            Console.Write("Ange antal personer i sällskapet: ");
 
             try
             {
@@ -97,7 +97,7 @@ namespace Ovning_2_Flode
 
             for (int i = 0; i < nrOfPersons; i++)
             {
-                totalCost += Program.calculatePrice(nrOfPersons);
+                totalCost += Program.calculatePrice(i + 1);
             }
 
             Console.Clear();
@@ -107,37 +107,29 @@ namespace Ovning_2_Flode
         }
 
 
-        private static int calculatePrice(int quantityOfPersons = 1)
+        private static int calculatePrice(int person = 1)
         {
             int price;
             Console.Write("Ange ålder");
 
-            if (quantityOfPersons > 1)
-            {
-                Console.Write($" för person {quantityOfPersons} ");
-            }
-
-            Console.WriteLine(":");
-
+            Console.Write($" för person {person}: ");
+         
             int age = int.Parse(Console.ReadLine());
 
             if (age < 20)
             {
                 Console.WriteLine("Ungdomspris: 80kr");
                 price = 80;
-                //return 80;
             }
             else if (age > 64)
             {
                 Console.WriteLine("Pensionärspris: 90kr");
                 price = 90;
-                //return 90;
             }
             else
             {
                 Console.WriteLine("Standardpris: 120kr");
-                price = 123;
-                //return 120;
+                price = 120;
             }
 
             Console.WriteLine();
