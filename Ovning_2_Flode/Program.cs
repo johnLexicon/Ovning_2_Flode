@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Reflection;
 using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
@@ -53,7 +54,7 @@ namespace Ovning_2_Flode
                     break;
                 case 1:
                     // ungdom pensionär
-                    price();
+                    calculatePrice();
                     break;
                 case 2:
                     // Upprepa tio gånger
@@ -77,36 +78,70 @@ namespace Ovning_2_Flode
 
         private static void company()
         {
-            Console.WriteLine("Ange antal personer i sällskapet");
-            int nrOfPersons = int.Parse(Console.ReadLine());
-            int[] persons = new int[nrOfPersons];
+            int totalCost = 0;
+            int nrOfPersons;
 
-            foreach (var person in persons)
+            Console.Clear();
+            Console.Write("Ange antal personer i sällskapet:");
+
+            try
             {
-
+                nrOfPersons = int.Parse(Console.ReadLine());
             }
+            catch (FormatException)
+            {
+                Console.Clear();
+                Console.WriteLine("Felaktig inmatning. Försök igen!");
+                return;
+            }
+
+            for (int i = 0; i < nrOfPersons; i++)
+            {
+                totalCost += Program.calculatePrice(nrOfPersons);
+            }
+
+            Console.Clear();
+            Console.WriteLine($"antal personer: {nrOfPersons}");
+            Console.WriteLine($"Totalpris: {totalCost.ToString("C", CultureInfo.CurrentCulture)}");
+            Console.WriteLine();
         }
 
 
-        private static void price()
+        private static int calculatePrice(int quantityOfPersons = 1)
         {
-            Console.WriteLine();
-            
-            Console.Write("Ange ålder: ");
+            int price;
+            Console.Write("Ange ålder");
+
+            if (quantityOfPersons > 1)
+            {
+                Console.Write($" för person {quantityOfPersons} ");
+            }
+
+            Console.WriteLine(":");
+
             int age = int.Parse(Console.ReadLine());
 
             if (age < 20)
             {
                 Console.WriteLine("Ungdomspris: 80kr");
+                price = 80;
+                //return 80;
             }
             else if (age > 64)
             {
                 Console.WriteLine("Pensionärspris: 90kr");
+                price = 90;
+                //return 90;
             }
             else
             {
                 Console.WriteLine("Standardpris: 120kr");
+                price = 123;
+                //return 120;
             }
+
+            Console.WriteLine();
+            return price;
         }
     }
 }
