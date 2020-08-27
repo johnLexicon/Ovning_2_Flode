@@ -13,13 +13,13 @@ namespace Ovning_2_Flode
         {   
             do
             {
-                printMenu();
-                handleMenu();
+                printMainMenu();
+                handleMainMenu();
             } while (terminate == false);
         }
 
 
-        private static void printMenu()
+        private static void printMainMenu()
         {
             //Console.Clear();
             Console.WriteLine("Huvudmenyn");
@@ -31,7 +31,7 @@ namespace Ovning_2_Flode
         }
 
 
-        private static int handleMenu()
+        private static int handleMainMenu()
         {
             int choice;
             
@@ -51,6 +51,7 @@ namespace Ovning_2_Flode
                     break;
                 case 1:
                     // ungdom pensionär
+                    price();
                     break;
                 case 2:
                     // Upprepa tio gånger
@@ -65,6 +66,26 @@ namespace Ovning_2_Flode
             }
 
             return choice;
+        }
+
+        private static void price()
+        {
+
+            Console.Write("Ange ålder: ");
+            int age = int.Parse(Console.ReadLine());
+
+            if (age < 20)
+            {
+                Console.WriteLine("Ungdomspris: 80kr");
+            }
+            else if (age > 64)
+            {
+                Console.WriteLine("Pensionärspris: 90kr");
+            }
+            else
+            {
+                Console.WriteLine("Standardpris: 120kr");
+            }
         }
     }
 }
