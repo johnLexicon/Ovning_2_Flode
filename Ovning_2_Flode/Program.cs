@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Reflection;
 using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
+using System.Text;
 using System.Xml.Serialization;
 
 namespace Ovning_2_Flode
@@ -58,6 +59,7 @@ namespace Ovning_2_Flode
                     break;
                 case 2:
                     // Upprepa tio gånger
+                    repeat();
                     break;
                 case 3:
                     // Det tredje ordet
@@ -75,6 +77,29 @@ namespace Ovning_2_Flode
             return choice;
         }
 
+        private static void repeat()
+        {
+            Console.Clear();
+            Console.Write("Skriv något! ");
+            string userInput = Console.ReadLine();
+
+            StringBuilder text = new StringBuilder();
+
+            int nrOfRepeats = 10;
+
+            for (int i = 0; i < nrOfRepeats; i++)
+            {
+                text.Append($"{i + 1}. {userInput}");
+                
+                if (i + 1 < nrOfRepeats)
+                {
+                    text.Append(", ");
+                }
+            }
+
+            Console.WriteLine(text);
+            Console.WriteLine();
+        }
 
         private static void company()
         {
