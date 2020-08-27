@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
 using System.Xml.Serialization;
@@ -26,6 +27,7 @@ namespace Ovning_2_Flode
             Console.WriteLine("1: Ungdom eller pensionär");
             Console.WriteLine("2: Upprepa tio gånger");
             Console.WriteLine("3: Det tredje ordet");
+            Console.WriteLine("4: Sällskap");
             Console.WriteLine("0: Avsluta");
             Console.Write("Välj alternativ: ");
         }
@@ -59,6 +61,10 @@ namespace Ovning_2_Flode
                 case 3:
                     // Det tredje ordet
                     break;
+                case 4:
+                    // Sällskap
+                    company();
+                    break;
                 default:
                     Console.Clear();
                     Console.WriteLine("Felaktig inmatning. Försök igen!");
@@ -68,9 +74,24 @@ namespace Ovning_2_Flode
             return choice;
         }
 
+
+        private static void company()
+        {
+            Console.WriteLine("Ange antal personer i sällskapet");
+            int nrOfPersons = int.Parse(Console.ReadLine());
+            int[] persons = new int[nrOfPersons];
+
+            foreach (var person in persons)
+            {
+
+            }
+        }
+
+
         private static void price()
         {
-
+            Console.WriteLine();
+            
             Console.Write("Ange ålder: ");
             int age = int.Parse(Console.ReadLine());
 
