@@ -12,13 +12,13 @@ namespace Ovning_2_Flode
         {   
             do
             {
-                printMainMenu();
-                handleMainMenu();
+                PrintMainMenu();
+                HandleMainMenu();
             } while (terminate == false);
         }
 
 
-        private static void printMainMenu()
+        private static void PrintMainMenu()
         {
             //Console.Clear();
             Console.WriteLine("Huvudmenyn");
@@ -31,7 +31,7 @@ namespace Ovning_2_Flode
         }
 
 
-        private static void handleMainMenu()
+        private static void HandleMainMenu()
         {
             int choice;
             
@@ -51,18 +51,18 @@ namespace Ovning_2_Flode
                     break;
                 case 1:
                     // ungdom pensionär
-                    calculatePrice();
+                    CalculatePrice();
                     break;
                 case 2:
                     // Upprepa tio gånger
-                    repeat();
+                    Repeat();
                     break;
                 case 3:
                     // Det tredje ordet
                     break;
                 case 4:
                     // Sällskap
-                    company();
+                    Company();
                     break;
                 default:
                     Console.Clear();
@@ -72,7 +72,7 @@ namespace Ovning_2_Flode
         }
 
 
-        private static void repeat()
+        private static void Repeat()
         {
             Console.Clear();
             Console.Write("Skriv något! ");
@@ -97,7 +97,7 @@ namespace Ovning_2_Flode
         }
 
 
-        private static void company()
+        private static void Company()
         {
             int totalCost = 0;
             int nrOfPersons;
@@ -118,7 +118,7 @@ namespace Ovning_2_Flode
 
             for (int i = 0; i < nrOfPersons; i++)
             {
-                totalCost += Program.calculatePrice(i + 1);
+                totalCost += Program.CalculatePrice(i + 1);
             }
 
             Console.Clear();
@@ -128,7 +128,7 @@ namespace Ovning_2_Flode
         }
 
 
-        private static int calculatePrice(int person = 1) //0? companymembers?
+        private static int CalculatePrice(int person = 1) //0? companymembers?
         {
             int price;
             Console.Write("Ange ålder");
