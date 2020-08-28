@@ -17,10 +17,11 @@ namespace Ovning_2_Flode
             } while (terminate == false);
         }
 
-
+        /// <summary>
+        /// prints main menu
+        /// </summary>
         private static void PrintMainMenu()
         {
-            //Console.Clear();
             Console.WriteLine("Huvudmenyn");
             Console.WriteLine("1: Ungdom eller pensionär");
             Console.WriteLine("2: Upprepa tio gånger");
@@ -30,7 +31,9 @@ namespace Ovning_2_Flode
             Console.Write("Välj alternativ: ");
         }
 
-
+        /// <summary>
+        /// Takes care of input from main menu
+        /// </summary>
         private static void HandleMainMenu()
         {
             int choice;
@@ -58,6 +61,7 @@ namespace Ovning_2_Flode
                     Repeat();
                     break;
                 case 3:
+                    pickThirdWord();
                     // Det tredje ordet
                     break;
                 case 4:
@@ -71,6 +75,20 @@ namespace Ovning_2_Flode
             }
         }
 
+
+        /// <summary>
+        /// Extracts the third word from a sentence
+        /// </summary>
+        private static void pickThirdWord()
+        {
+
+            Console.Clear();
+            Console.WriteLine("Ange en mening med minst tre ord!");
+            var sentence = Console.ReadLine();
+            string[] words = sentence.Split(" ");
+            Console.WriteLine($"Det tredje ordet är: {words[2]}");
+            Console.WriteLine();
+        }
 
         private static void Repeat()
         {
@@ -131,6 +149,7 @@ namespace Ovning_2_Flode
         private static int CalculatePrice(int person = 1) //0? companymembers?
         {
             int price;
+
             Console.Write("Ange ålder");
 
             Console.Write($" för person {person}: ");
