@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.CompilerServices;
+using System;
 using System.Globalization;
 using System.Text;
 
@@ -6,6 +7,7 @@ namespace Ovning_2_Flode
 {
     class Program
     {
+        // Flag to terminate program
         private static bool terminate = false;
 
         static void Main(string[] args)
@@ -37,51 +39,69 @@ namespace Ovning_2_Flode
         private static void HandleMainMenu()
         {
             int choice;
-            
-            try
-            {
-                choice = int.Parse(Console.ReadLine());
-            }
-            catch (FormatException)
-            {
-                choice = -1;
-            }
+
+            choice = CheckInput("integ");
 
             switch (choice)
             {
                 case 0:
                     terminate = true;
                     break;
-                case 1:
-                    // ungdom pensionär
+                case 1: // Ungdom pensionär
                     CalculatePrice();
                     break;
-                case 2:
-                    // Upprepa tio gånger
+                case 2: // Upprepa tio gånger
                     Repeat();
                     break;
-                case 3:
+                case 3: // Det tredje ordet
                     pickThirdWord();
-                    // Det tredje ordet
                     break;
-                case 4:
-                    // Sällskap
+                case 4: // Sällskap
                     Company();
                     break;
                 default:
                     Console.Clear();
-                    Console.WriteLine("Felaktig inmatning. Försök igen!"); // Bryta ut?
+                    Console.WriteLine("Felaktig inmatning. Försök igen!");
                     break;
             }
         }
 
 
-        /// <summary>
-        /// Extracts the third word from a sentence
-        /// </summary>
-        private static void pickThirdWord()
+        private static int CheckInput(string inputType)
         {
+            if (inputType == "integ")
+            {
+                int outputInteger;
 
+                try
+                {
+                    outputInteger = int.Parse(Console.ReadLine());
+                }
+                catch (FormatException)
+                {
+                    outputInteger = -1;
+                }
+                catch (OverflowException)
+                {
+                    outputInteger = -1;
+                }
+                catch (Exception)
+                {
+                    outputInteger = -1;
+                }
+                finally
+                {
+                    return outputInteger;
+                }
+            }
+        }
+
+
+            /// <summary>
+            /// Extracts the third word from a sentence
+            /// </summary>
+            private static void pickThirdWord()
+        {
             Console.Clear();
             Console.WriteLine("Ange en mening med minst tre ord!");
             var sentence = Console.ReadLine();
@@ -90,6 +110,9 @@ namespace Ovning_2_Flode
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// Repeats a string ten times
+        /// </summary>
         private static void Repeat()
         {
             Console.Clear();
@@ -145,14 +168,22 @@ namespace Ovning_2_Flode
             Console.WriteLine();
         }
 
-
-        private static int CalculatePrice(int person = 1) //0? companymembers?
+        /// <summary>
+        /// Calculates ticket (?) price from person age
+        /// </summary>
+        /// <param name="person"></param>
+        /// <returns>"price"</returns>
+        private static int CalculatePrice(int person = 0) // Default, 0, is for non companies
         {
             int price;
 
             Console.Write("Ange ålder");
 
-            Console.Write($" för person {person}: ");
+            if (person > 0)
+            {
+                Console.Write($" för person {person}");
+            }
+            Console.Write(": ");
          
             int age = int.Parse(Console.ReadLine());
 
