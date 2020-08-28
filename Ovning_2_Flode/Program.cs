@@ -94,15 +94,14 @@ namespace Ovning_2_Flode
                     return outputInteger;
                 }
             }
-
             return 0;
         }
 
 
-            /// <summary>
-            /// Extracts the third word from a sentence
-            /// </summary>
-            private static void pickThirdWord()
+        /// <summary>
+        /// Extracts the third word from a sentence
+        /// </summary>
+        private static void pickThirdWord()
         {
             Console.Clear();
             Console.WriteLine("Ange en mening med minst tre ord!");
@@ -148,25 +147,25 @@ namespace Ovning_2_Flode
             Console.Clear();
             Console.Write("Ange antal personer i sällskapet: ");
 
-            try
-            {
-                nrOfPersons = int.Parse(Console.ReadLine());
-            }
-            catch (FormatException)
+            nrOfPersons = CheckInput("integ");
+
+            if (nrOfPersons < 1)
             {
                 Console.Clear();
                 Console.WriteLine("Felaktig inmatning. Försök igen!");
-                return;
             }
-
-            for (int i = 0; i < nrOfPersons; i++)
+            else
             {
-                totalCost += Program.CalculatePrice(i + 1);
-            }
+                for (int i = 0; i < nrOfPersons; i++)
+                {
+                    totalCost += Program.CalculatePrice(i + 1);
+                }
 
-            Console.Clear();
-            Console.WriteLine($"antal personer: {nrOfPersons}");
-            Console.WriteLine($"Totalpris: {totalCost.ToString("C", CultureInfo.CurrentCulture)}");
+                Console.Clear();
+                Console.WriteLine($"antal personer: {nrOfPersons}");
+                Console.WriteLine($"Totalpris: {totalCost.ToString("C", CultureInfo.CurrentCulture)}");
+            }
+               
             Console.WriteLine();
         }
 
