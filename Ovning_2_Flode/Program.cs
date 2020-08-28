@@ -71,29 +71,31 @@ namespace Ovning_2_Flode
         {
             if (inputType == "integ")
             {
-                int outputInteger;
+                int outputInteger = 0;
 
                 try
                 {
                     outputInteger = int.Parse(Console.ReadLine());
+                    return outputInteger;
                 }
                 catch (FormatException)
                 {
                     outputInteger = -1;
+                    return outputInteger;
                 }
                 catch (OverflowException)
                 {
                     outputInteger = -1;
+                    return outputInteger;
                 }
                 catch (Exception)
                 {
                     outputInteger = -1;
-                }
-                finally
-                {
                     return outputInteger;
                 }
             }
+
+            return 0;
         }
 
 
